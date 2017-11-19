@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> HANGMAN STYLE </title>
+  	<meta charset="UTF-8">
+  	<title>Basic JavaScript Dump</title>
+</head>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<script type=src="https://code.jquery.com/jquery.js"></script>
+		<div id="container">
+			<div id= "header">
+
+				<h1>
+				Oppa Hangman Style!!!
+				</h1>
+
+	
+				<img src ="https://c1.staticflickr.com/9/8482/8200019878_94b4ee8315_z.jpg"
+				style="width:400px; height:400px";>
+			</div>
+		<div class="row">
+			<div class="col-12">
+
+			<div id="holder">
+
+			</div>
+			<button id="start" name="start" type="button">Start Game!</button>
+
+			</div>
+		</div>
+
+
+		<script type= "text/javascript">
+
+		var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+        'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+        't', 'u', 'v', 'w', 'x', 'y', 'z'];
+		var word ;
+		var guess ;
+		var guesses = [];
+		var lives ;
+		var counter; 
+		var space;
+		var option = ["oppa", "gangnam", "style", "aye", "sexy","lady"];
+		var holder
+     
+
+		word = option[Math.floor(Math.random() * option.length)];
+		
+ 
+
+    result = function () {
+
+    for (var i = 0; i < word.length; i++) {
+    	guess = document.createElement("li");
+      	guess.innerHTML = "_";
+  	}
+
+
+   
+     
+
+ 
+  	}
+  
+    console.log(word);
+    console.log(holder);
+    console.log(guess);
+
+   
+
+
+   
+	</script>
+	</body>
+</html>
