@@ -5,31 +5,35 @@
   	<meta charset="UTF-8">
   	<title>Basic JavaScript Dump</title>
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"></link> 
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<script type=src="https://code.jquery.com/jquery.js"></script>
-		<div id="container">
-			<div id= "header">
+		<div id="wrapper">
 
 				<h1>
 				Oppa Hangman Style!!!
 				</h1>
-
-	
+				<br>
+				<p>Click start to begin!</p>
+				<br>
 				<img src ="https://c1.staticflickr.com/9/8482/8200019878_94b4ee8315_z.jpg"
 				style="width:400px; height:400px";>
+			<div class="wrapper">
+				<div id = "lives"></div>
+				<div id = "holder"></div>
+				<div id = "guessleft"></div>
+				<div id = "guessed"></div>
 			</div>
-		<div class="row">
-			<div class="col-12">
+				
 
-			<div id="holder">
+			
 
 			</div>
 			<button id="start" name="start" type="button">Start Game!</button>
 
 			</div>
-		</div>
+		<body>
 
 
 		<script type= "text/javascript">
@@ -38,40 +42,60 @@
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
 		var word ;
-		var guess ;
 		var guesses = [];
 		var lives ;
 		var counter; 
 		var space;
 		var option = ["oppa", "gangnam", "style", "aye", "sexy","lady"];
-		var holder
-     
-
-		word = option[Math.floor(Math.random() * option.length)];
+     	var word = option[Math.floor(Math.random() * option.length)];
+		var array = word.split("");
 		
- 
+		var showLives = document.getElementById("mylives");
+  		var showCatagory = document.getElementById("scatagory");
+ 		var getHint = document.getElementById("hint");
+ 		var showClue = document.getElementById("clue");
+		
 
-    result = function () {
+		var holder = $("#holder")
+		var list = $('ul');
+    	
+    	for (var i = 0; i < array.length; i++) {
+    		var space = $("<span>" + array[i] + "</span")
+    		space.html("_ ");
+    		holder.append(space);
+    		
 
-    for (var i = 0; i < word.length; i++) {
-    	guess = document.createElement("li");
-      	guess.innerHTML = "_";
-  	}
+   }
 
 
-   
-     
 
- 
-  	}
-  
+    	window.addEventListener("keydown", checkKeyPress, false);
+    	function checkKeyPress(e){
+    		var key = (e.key);
+
+    		for(i = 0; i < array.length; i++){
+
+    		if (array[i] === key){
+    			space[i].innerHTML= key;
+			} else {
+    			console.log(key);
+
+    		}
+    		}
+    		
+    		}
+
+
+    	
+    
+    
+
+      
     console.log(word);
     console.log(holder);
+    console.log(array);
+    console.log(space);
     console.log(guess);
-
-   
-
-
    
 	</script>
 	</body>
