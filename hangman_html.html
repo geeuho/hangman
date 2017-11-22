@@ -15,15 +15,17 @@
 				Oppa Hangman Style!!!
 				</h1>
 				<br>
-				<p>Click start to begin!</p>
+				<p>Press Start to begin or get new word!</p>
+				<p>Guess a word from Gangnam Style's Chorus!</p>
+				<p>Don't guess the wrong letter twice I don't have the code for that yet! Oppa Gangnam Style!... GO!</p>
+
 				<br>
 				<img src ="https://c1.staticflickr.com/9/8482/8200019878_94b4ee8315_z.jpg"
 				style="width:400px; height:400px";>
 			<div class="wrapper">
-				<div id = "lives"></div>
+				<div id = "lives">You have 3 gangnam lives left!</div>
 				<div id = "holder"></div>
-				<div id = "guessleft"></div>
-				<div id = "guessed"></div>
+				<div id = "guessed">Wrong guesses: </div>
 			</div>
 				
 
@@ -31,43 +33,43 @@
 
 			</div>
 			<button id="start" name="start" type="button">Start Game!</button>
+		
 
 			</div>
 		<body>
 
 
 		<script type= "text/javascript">
-
+		
 		var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
         't', 'u', 'v', 'w', 'x', 'y', 'z'];
 		var word ;
-		var guesses = [];
-		var lives ;
+		var wrong = [];
+		var lives = 3;
 		var counter; 
 		var space;
 		var option = ["oppa", "gangnam", "style", "aye", "sexy","lady"];
      	var word = option[Math.floor(Math.random() * option.length)];
 		var array = word.split("");
 		
-		var showLives = document.getElementById("mylives");
-  		var showCatagory = document.getElementById("scatagory");
- 		var getHint = document.getElementById("hint");
- 		var showClue = document.getElementById("clue");
+		var livesleft = $("#lives");
+ 		var guessed = $("#guessed");
+		
 		
  		
  		$('#start').click(function(){
+ 			location.reload();
+ 		});
 
-		var holder = $("#holder")
-		var list = $('ul');
 		var holder = $("#holder");
 		var correct = [];
     	
     	for (var i = 0; i < array.length; i++) {
-    		var space = $("<span>" + array[i] + "</span")
-    		holder.append(space);
     		
+    		// space.html("_ ");
     		correct.push('_ ')
+    	}
 
   		holder.append(correct);
 
@@ -76,25 +78,31 @@
     	window.addEventListener("keydown", checkKeyPress);
     	function checkKeyPress(e){
     		var key = (e.key);
+    		var arr = array.indexOf(key);
+
+    			if (array[arr] === key){
+    				correct[arr] = key;
+    				holder.html(correct.join(' '));
+				} else{
+					if(key !== wrong[i]);{
+					wrong.push(key);
+				}
+				}	
+				guessed.text("Wrong guesses: " + wrong);
+			if (array[arr] !== key){
+				lives -= 1;
+				livesleft.text("You have " + lives + " gangnam lives left!");
+			} 
+
+			if (lives < 1){
+				alert("GANGNAM OVER! YOU LOSE! REFRESH TO START OVER");	
 				lives = 1;
+			}
 
-    		for(i = 0; i < array.length; i++){
+			
+ 		}
 
-    		if (array[i] === key){
-    			space[i].innerHTML= key;
-			} else {
-    			console.log(key);
-
-    		}
-    		}
-    		
-    		}
-
-
-    	
-    
-    
-
+function getAllIndexes(arr, val) {
     var indexes = [], i = -1;
     while ((i = arr.indexOf(val, i+1)) != -1){
         indexes.push(i);
